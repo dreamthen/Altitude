@@ -172,18 +172,18 @@ img {
 /*
     Card title CSS
 */
-.al-main > div > .al-section-card > .al-section-card-title {
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-card-title {
     display: block;
 }
 
-.al-main > div > .al-section-card > .al-section-card-title > .mdl-card__title-text{
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-card-title > .mdl-card__title-text{
     font-size:28px;
 }
 
 /*
     Card content CSS
 */
-.al-main > div > .al-section-card > .al-section-card-content {
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-card-content {
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     font-size:16px;
 }
@@ -191,21 +191,21 @@ img {
 /*
     Card image CSS
 */
-.al-main > div > .al-section-card > .al-section-image {
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-image {
     padding: 0 16px;
 }
 
 /*
     Card user CSS
 */
-.al-main > div > .al-section-card > .al-section-card-user {
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-card-user {
     padding: 10px 16px;
 }
 
 /*
     Card headImage CSS
 */
-.al-main > div > .al-section-card > .al-section-card-user > .al-section-card-headImage {
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-card-user > .al-section-card-headImage {
     position:relative;
     display: inline-block;
     width:38px;
@@ -213,20 +213,41 @@ img {
     top:2px;
 }
 
-.al-main > div > .al-section-card > .al-section-card-user > .al-section-card-time {
+/*
+    Card userAndtime CSS
+*/
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-card-user > .al-section-card-time {
     position:relative;
     display: inline-block;
     left:8px;
     bottom: 2px;
 }
 
-.al-main > div > .al-section-card > .al-section-card-user > .al-section-card-time span{
+/*
+    Card user CSS
+*/
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-card-user > .al-section-card-time span{
     display: block;
     font-size:18px;
 }
 
-.al-main > div > .al-section-card > .al-section-card-user > .al-section-card-time time {
+/*
+    Card time CSS
+*/
+.al-main > div > .al-section-card-list > .al-section-card > .al-section-card-user > .al-section-card-time time {
     font-size:12px;
     display: block;
     color:rgba(0,0,0,.38);
+}
+
+
+.al-mainInfo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
 }
