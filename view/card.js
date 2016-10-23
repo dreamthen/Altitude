@@ -3,14 +3,50 @@
  */
 $(function() {
     /**
-     * viewCard Altitude汰度列表
+     * ShowMainContainer Altitude每一个汰度具体信息
+     */
+    var ShowMainContainer = React.createClass({
+        getInitialState: function () {
+            return {
+
+            }
+        },
+        componentWillMount: function () {
+
+        },
+        shouldComponentUpdate: function () {
+            return true;
+        },
+        componentWillUpdate: function () {
+
+        },
+        componentDidUpdate: function () {
+
+        },
+        componentDidMount: function () {
+
+        },
+        render: function () {
+            return (
+                <div>
+                    hello,world
+                </div>
+            )
+        },
+        componentWillUnmount: function () {
+
+        }
+    });
+    /**
+     * ViewCard Altitude汰度列表
      */
     var ViewCard = React.createClass({
         getInitialState: function () {
             return {
                 listCardView: [],
                 time: "",
-                scrollFlag: false
+                scrollFlag: false,
+                info: {}
             }
         },
         requestListScroll: function (param) {
@@ -40,6 +76,9 @@ $(function() {
             this.serverRequestAjax.abort();
             this.serverRequestAjaxScroll.abort();
         },
+        showMainInfo:function() {
+            $("#maintain").show(500);
+        },
         shouldComponentUpdate: function (nextProps, nextState) {
             return true;
         },
@@ -52,35 +91,42 @@ $(function() {
         render: function () {
             var list = this.state.listCardView;
             var time = this.state.time;
+            var info = this.state.info;
             return (
                 <div>
-                    {
-                        list.map(function (listItem) {
-                            return (<section className="demo-card-square mdl-card mdl-shadow--2dp al-section-card">
-                                <div className="mdl-card__title al-section-card-title">
-                                    <h2 className="mdl-card__title-text">{listItem.title}</h2>
-                                </div>
-                                {listItem.image.length > 0 && <div className="al-section-image">
-                                    <img src={listItem.image} alt=""/>
-                                </div>}
-                                <div className="mdl-card__supporting-text al-section-card-content">
-                                    {listItem.content}
-                                </div>
-                                <div className="mdl-card__actions al-section-card-user">
-                                    <div className="al-section-card-headImage"
-                                         style={{
-                                             background: "url(" + listItem.headImage + ") center center no-repeat border-box content-box",
-                                             backgroundSize: "cover"
-                                         }}>
+                    <div className="al-section-card-list">
+                        {
+                            list.map(function (listItem) {
+                                return (<section className="demo-card-square mdl-card mdl-shadow--2dp al-section-card"
+                                                 onClick={this.showMainInfo.bind(this, listItem.id)}>
+                                    <div className="mdl-card__title al-section-card-title">
+                                        <h2 className="mdl-card__title-text">{listItem.title}</h2>
                                     </div>
-                                    <div className="al-section-card-time">
-                                        <span>{listItem.user}</span>
-                                        <time>{time}</time>
+                                    {listItem.image.length > 0 && <div className="al-section-image">
+                                        <img src={listItem.image} alt=""/>
+                                    </div>}
+                                    <div className="mdl-card__supporting-text al-section-card-content">
+                                        {listItem.content}
                                     </div>
-                                </div>
-                            </section>)
-                        })
-                    }
+                                    <div className="mdl-card__actions al-section-card-user">
+                                        <div className="al-section-card-headImage"
+                                             style={{
+                                                 background: "url(" + listItem.headImage + ") center center no-repeat border-box content-box",
+                                                 backgroundSize: "cover"
+                                             }}>
+                                        </div>
+                                        <div className="al-section-card-time">
+                                            <span>{listItem.user}</span>
+                                            <time>{time}</time>
+                                        </div>
+                                    </div>
+                                </section>)
+                            }.bind(this))
+                        }
+                    </div>
+                    <main id="maintain" className="al-mainInfo">
+                        <ShowMainContainer info={info}/>
+                    </main>
                 </div>
             )
         },
