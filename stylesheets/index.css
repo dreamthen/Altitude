@@ -1,0 +1,232 @@
+@charset "utf-8";
+h1, h2, h3, h4, h5, h6, ul, figure, figcaption {
+    padding: 0;
+    margin: 0;
+}
+
+/**
+    头部主题样式
+*/
+.al-header {
+    width: 100%;
+    position: relative;
+}
+
+/**
+    背景样式
+*/
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.al-header > img {
+    position: fixed;
+    min-width: 1420px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/**
+    头部导航样式
+*/
+.al-header > .al-nav-container > .al-nav, .al-header > .al-section-description {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    color: #fff;
+    width: 58%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.al-header > .al-nav-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: transparent;
+}
+
+/**
+    头部包含一二级标题框架样式
+*/
+.al-header > .al-section-description {
+    text-align: center;
+    height: 400px;
+    margin-top: 75px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -ms-flex-flow: column nowrap;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/**
+    头部一级标题以及头部LOGO样式
+*/
+.al-header > .al-nav-container > .al-nav > h1, .al-header > .al-section-description > h1 {
+    float: left;
+    display: inline-block;
+    font-weight: normal;
+    font-size: 44px;
+    font-family: "Consolas";
+    text-shadow: 0 2px rgba(0, 0, 0, .3);
+    padding: 8px 0;
+}
+
+/**
+    头部导航具体样式
+*/
+.al-header > .al-nav-container > .al-nav > .al-ul {
+    float: right;
+    list-style-type: none;
+    padding: 8px 0;
+}
+
+.al-header > .al-nav-container > .al-nav > .al-ul li {
+    float: left;
+    font-size: 16px;
+    letter-spacing: 1px;
+    position: relative;
+    top: 21px;
+    margin: 0 0 0 20px;
+    text-shadow: 0 2px rgba(0, 0, 0, .2);
+}
+
+.al-header > .al-nav-container > .al-nav > .al-ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.al-header > .al-nav-container > .al-nav > .al-ul::after, .al-header > > .al-nav-container > .al-nav::after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+
+/**
+    头部一级标题样式
+*/
+.al-header > .al-section-description > h1 {
+    float: none;
+    font-size: 38px;
+    text-shadow: 0 2px rgba(0, 0, 0, .2);
+}
+
+/**
+    头部二级标题样式
+*/
+.al-header > .al-section-description > h2 {
+    font-size: 20px;
+    line-height: 1.315;
+    text-shadow: 0 1px rgba(0, 0, 0, .2);
+}
+
+/*
+    Card Container CSS
+*/
+.al-main {
+    width: 100%;
+}
+
+/*
+    Card CSS
+*/
+.al-main .al-section-card {
+    position: relative;
+    top: -100px;
+    width: 45%;
+    margin: 30px auto 0 auto;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .3s ease-in-out 0s;
+    -webkit-transition: all .3s ease-in-out 0s;
+    -moz-transition: all .3s ease-in-out 0s;
+    -ms-transition: all .3s ease-in-out 0s;
+    -o-transition: all .3s ease-in-out 0s;
+    z-index: 3;
+}
+
+/*
+    Card CSS Hover
+*/
+.al-main .al-section-card:hover {
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
+}
+
+/*
+    Card title CSS
+*/
+.al-main > div > .al-section-card > .al-section-card-title {
+    display: block;
+}
+
+.al-main > div > .al-section-card > .al-section-card-title > .mdl-card__title-text{
+    font-size:28px;
+}
+
+/*
+    Card content CSS
+*/
+.al-main > div > .al-section-card > .al-section-card-content {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    font-size:16px;
+}
+
+/*
+    Card image CSS
+*/
+.al-main > div > .al-section-card > .al-section-image {
+    padding: 0 16px;
+}
+
+/*
+    Card user CSS
+*/
+.al-main > div > .al-section-card > .al-section-card-user {
+    padding: 10px 16px;
+}
+
+/*
+    Card headImage CSS
+*/
+.al-main > div > .al-section-card > .al-section-card-user > .al-section-card-headImage {
+    position:relative;
+    display: inline-block;
+    width:38px;
+    height:38px;
+    top:2px;
+}
+
+.al-main > div > .al-section-card > .al-section-card-user > .al-section-card-time {
+    position:relative;
+    display: inline-block;
+    left:8px;
+    bottom: 2px;
+}
+
+.al-main > div > .al-section-card > .al-section-card-user > .al-section-card-time span{
+    display: block;
+    font-size:18px;
+}
+
+.al-main > div > .al-section-card > .al-section-card-user > .al-section-card-time time {
+    font-size:12px;
+    display: block;
+    color:rgba(0,0,0,.38);
+}
