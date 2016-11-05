@@ -8,9 +8,7 @@
     "user": "ohhyoo",
     "title": "get up and walk!",
     "headImage": "/Altitude/images/smk.png",
-    "image": [
-      "/Altitude/images/background.png"
-    ],
+    "image": "/Altitude/images/background.png",
     "content": "Jus a strange guy..He is trying to walk with these sticks legs"
   }
 }

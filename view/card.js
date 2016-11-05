@@ -8,7 +8,7 @@ $(function() {
     var ShowMainContainer = React.createClass({
         getInitialState: function () {
             return {
-                cardInfo: {}
+
             }
         },
         componentWillMount: function () {
@@ -21,18 +21,7 @@ $(function() {
 
         },
         componentDidUpdate: function () {
-            var id = this.props.id,
-                param = this.props.source;
-            param.url = api.CARD_INNER_INFO;
-            param.data.id = id;
-            Altitude.requestAjax(param, function () {
-                if (result.head.code === defaultThing.DEFAULT_SUCCESS_CODE) {
-                    var body = result.body;
 
-                } else {
-                    alert(result.head.msg);
-                }
-            }.bind(this));
         },
         componentDidMount: function () {
 
@@ -41,18 +30,41 @@ $(function() {
             $("#maintain").hide(500);
         },
         render: function () {
+            var cardInfo = this.props.info,
+                time = this.props.time;
             return (
                 <section className="al-mainInformation">
                     <section className="al-mainInfoMain">
-                        <header className="al-mainInfo-header">
-
+                        <header className="mdl-card__title al-mainInfo-header">
+                            <nav>
+                                <figure className="al-mainInfo-headImage">
+                                    <img src={cardInfo.headImage} alt=""/>
+                                </figure>
+                                <figcaption className="al-mainInfo-time">
+                                    <def className="al-mainInfo-time-title">
+                                        {cardInfo.title}
+                                    </def>
+                                    <def className="al-mainInfo-time-user">
+                                        by <abbr style={{color:"rgb(70,128,178)",fontWeight:"bolder"}}>{cardInfo.user}</abbr> on <time style={{color:"rgb(187,190,193)",fontWeight:"bolder"}}>{time}</time>
+                                    </def>
+                                </figcaption>
+                            </nav>
                         </header>
-                        <article className="al-mainInfo-show">
+                        <section className="al-mainInfo-section">
+                            <article className="al-mainInfo-show">
+                                {cardInfo.image &&
+                                <figure className="al-mainInfo-figure" style={{background:"url(.."+cardInfo.image+") center center no-repeat border-box content-box", backgroundSize:"contain"}}>
 
-                        </article>
-                        <aside className="al-mainInfo-aside">
-
-                        </aside>
+                                </figure>}
+                                <def className="al-mainInfo-section-def">
+                                    {cardInfo.content}
+                                </def>
+                            </article>
+                            <aside className="al-mainInfo-aside">
+                                <def className="al-mainInfo-share">share</def>
+                                <def className="al-mainInfo-share al-mainInfo-ano">likes</def>
+                            </aside>
+                        </section>
                         <i className="iconfont icon-close" onClick={this.closeMainInfo.bind(this)}> </i>
                     </section>
                 </section>
@@ -71,7 +83,8 @@ $(function() {
                 listCardView: [],
                 time: "",
                 scrollFlag: false,
-                id: 0
+                id: 0,
+                cardInfo: {}
             }
         },
         requestListScroll: function (param) {
@@ -102,9 +115,19 @@ $(function() {
             this.serverRequestAjaxScroll.abort();
         },
         showMainInfo: function (id) {
-            this.setState({
-                id: id
-            });
+            var param = this.props.source;
+            param.url = api.CARD_INNER_INFO;
+            param.data.id = id;
+            Altitude.requestAjax(param, function (result) {
+                if (result.head.code === defaultThing.DEFAULT_SUCCESS_CODE) {
+                    var body = result.body;
+                    this.setState({
+                        cardInfo: body
+                    })
+                } else {
+                    alert(result.head.msg);
+                }
+            }.bind(this));
             $("#maintain").show(500);
         },
         shouldComponentUpdate: function (nextProps, nextState) {
@@ -119,8 +142,7 @@ $(function() {
         render: function () {
             var list = this.state.listCardView,
                 time = this.state.time,
-                id = this.state.id;
-                param = this.props.source;
+                info = this.state.cardInfo;
             return (
                 <div>
                     <div className="al-section-card-list">
@@ -154,7 +176,7 @@ $(function() {
                         }
                     </div>
                     <section id="maintain" className="al-mainInfo">
-                        <ShowMainContainer id={id} source={param}/>
+                        <ShowMainContainer info={info} time={time}/>
                     </section>
                 </div>
             )

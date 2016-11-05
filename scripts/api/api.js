@@ -12,6 +12,6 @@ if (!isMook) {
 } else {
     api = {
         CARD_VIEW: mookSrc + "/al-card.json",
-        CARD_INNER_INFO: mookSrc + "/al-card-info"
+        CARD_INNER_INFO: mookSrc + "/al-card-info.json"
     };
 }
