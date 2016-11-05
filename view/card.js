@@ -8,7 +8,7 @@ $(function() {
     var ShowMainContainer = React.createClass({
         getInitialState: function () {
             return {
-
+                cardInfo: {}
             }
         },
         componentWillMount: function () {
@@ -21,16 +21,41 @@ $(function() {
 
         },
         componentDidUpdate: function () {
+            var id = this.props.id,
+                param = this.props.source;
+            param.url = api.CARD_INNER_INFO;
+            param.data.id = id;
+            Altitude.requestAjax(param, function () {
+                if (result.head.code === defaultThing.DEFAULT_SUCCESS_CODE) {
+                    var body = result.body;
 
+                } else {
+                    alert(result.head.msg);
+                }
+            }.bind(this));
         },
         componentDidMount: function () {
 
         },
+        closeMainInfo: function () {
+            $("#maintain").hide(500);
+        },
         render: function () {
             return (
-                <div>
-                    hello,world
-                </div>
+                <section className="al-mainInformation">
+                    <section className="al-mainInfoMain">
+                        <header className="al-mainInfo-header">
+
+                        </header>
+                        <article className="al-mainInfo-show">
+
+                        </article>
+                        <aside className="al-mainInfo-aside">
+
+                        </aside>
+                        <i className="iconfont icon-close" onClick={this.closeMainInfo.bind(this)}> </i>
+                    </section>
+                </section>
             )
         },
         componentWillUnmount: function () {
@@ -46,7 +71,7 @@ $(function() {
                 listCardView: [],
                 time: "",
                 scrollFlag: false,
-                info: {}
+                id: 0
             }
         },
         requestListScroll: function (param) {
@@ -62,7 +87,7 @@ $(function() {
                 }
             }.bind(this));
         },
-        requestTime:function(){
+        requestTime: function () {
             var date = this.props.date;
             var time = Altitude.requestAlTime(date);
             this.setState({
@@ -76,7 +101,10 @@ $(function() {
             this.serverRequestAjax.abort();
             this.serverRequestAjaxScroll.abort();
         },
-        showMainInfo:function() {
+        showMainInfo: function (id) {
+            this.setState({
+                id: id
+            });
             $("#maintain").show(500);
         },
         shouldComponentUpdate: function (nextProps, nextState) {
@@ -89,9 +117,10 @@ $(function() {
 
         },
         render: function () {
-            var list = this.state.listCardView;
-            var time = this.state.time;
-            var info = this.state.info;
+            var list = this.state.listCardView,
+                time = this.state.time,
+                id = this.state.id;
+                param = this.props.source;
             return (
                 <div>
                     <div className="al-section-card-list">
@@ -124,9 +153,9 @@ $(function() {
                             }.bind(this))
                         }
                     </div>
-                    <main id="maintain" className="al-mainInfo">
-                        <ShowMainContainer info={info}/>
-                    </main>
+                    <section id="maintain" className="al-mainInfo">
+                        <ShowMainContainer id={id} source={param}/>
+                    </section>
                 </div>
             )
         },

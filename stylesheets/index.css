@@ -240,7 +240,9 @@ img {
     color:rgba(0,0,0,.38);
 }
 
-
+/*
+    Card Information CSS
+*/
 .al-mainInfo {
     display: none;
     position: fixed;
@@ -250,4 +252,46 @@ img {
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 2000;
+}
+
+/*
+    Card Information Box CSS
+*/
+.al-mainInfo > .al-mainInformation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -ms-flex-flow: column nowrap;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.al-mainInfo > .al-mainInformation > .al-mainInfoMain {
+    position: relative;
+    width: 60%;
+    height: 700px;
+    border-radius: 8px;
+    background: #fff;
+    overflow: auto;
+}
+
+.al-mainInfo > .al-mainInformation > .al-mainInfoMain > .icon-close {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    padding: 3px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2001;
 }
